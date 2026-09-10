@@ -2,6 +2,7 @@ import {
     calcularCostoPeso,
     calcularCostoDistancia,
     calcularSubtotal,
+    aplicarDescuento,
     calcularImpuesto,
     calcularTotal
 } from './funciones.js';
@@ -12,7 +13,7 @@ import {
         const nombre = document.getElementById('nombreCliente').value.trim();
         const pesoKg = parseFloat(document.getElementById('pesoKg').value);
         const distanciaKm = parseInt(document.getElementById('distanciaKm').value);
-        const codigoDescuento = document.getElementById('codigoDescuento').value.trim();
+        const codigoDescuento = document.getElementById('codigoDescuento').value.trim().toUpperCase();
 
         const mensajeError = document.getElementById('error');
         const resultado = document.getElementById('resultado');
@@ -33,11 +34,12 @@ import {
             mensajeError.textContent = 'Por favor ingresa un valor valido en la distancia, debe ser mayor a 0.';
             return;
         }
+        
         //Calculos
         const costoPeso = calcularCostoPeso(pesoKg);
         const costoDistancia = calcularCostoDistancia(distanciaKm);
         const subtotal = calcularSubtotal(costoPeso, costoDistancia);
-        const totalConDescuento = subtotal; 
+        const totalConDescuento = aplicarDescuento(subtotal, codigoDescuento);
         const impuesto = calcularImpuesto(totalConDescuento);
         const total = calcularTotal(totalConDescuento, impuesto);
         //Aqui mostraremos los resultados en el HTML

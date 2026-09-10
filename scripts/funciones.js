@@ -10,6 +10,19 @@ function calcularSubtotal(costoPeso, costoDistancia) {
     return costoPeso + costoDistancia;
 }
 
+function aplicarDescuento(subtotal, codigoDescuento) {
+
+    if (codigoDescuento === '') {
+        return subtotal;
+    }
+
+    if (codigoDescuento === 'UAO') {
+        return subtotal * 0.85;
+    }
+
+    return subtotal;
+}
+
 function calcularImpuesto(totalConDescuento) {
     return totalConDescuento * 0.08;
 }
@@ -22,6 +35,7 @@ export {
     calcularCostoPeso,
     calcularCostoDistancia,
     calcularSubtotal,
+    aplicarDescuento,
     calcularImpuesto,
     calcularTotal
 };

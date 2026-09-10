@@ -22,6 +22,10 @@ import {
         resultado.innerHTML = '';
 
         //Validaciones
+        if (codigoDescuento !== '' && codigoDescuento !== 'UAO') {
+            mensajeError.textContent = 'Código de descuento no válido.';
+            return;
+                }
         if (nombre === '') {
             mensajeError.textContent = 'Por favor ingresa el nombre del cliente.';
             return;
